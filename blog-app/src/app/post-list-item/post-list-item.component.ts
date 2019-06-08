@@ -1,0 +1,36 @@
+import { Component, Input, OnInit } from '@angular/core';
+import { Post } from 'src/app/post';
+
+@Component({
+  selector: 'app-post-list-item',
+  templateUrl: './post-list-item.component.html',
+  styleUrls: ['./post-list-item.component.scss']
+})
+
+export class PostListItemComponent implements OnInit {
+
+  @Input()Post: Post ;
+
+  constructor() { }
+
+  ngOnInit() {
+  }
+
+  getLovesIt() {
+    if (this.Post.loveIts > 0) {
+      return 1;
+    } else if (this.Post.loveIts < 0) {
+      return 0;
+    }
+
+  }
+
+  OnLoveIt() {
+    this.Post.loveIts++;
+  }
+
+  OnDontLoveIt() {
+    this.Post.loveIts--;
+  }
+
+}
